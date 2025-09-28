@@ -39,4 +39,4 @@ The page highlights SmileSchool’s offerings, showcases professional mentors, o
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/smile-school-landing.git
+   git clone https://github.com/MichaelOmosebi/alx_html_css/tree/main/css_advanced
