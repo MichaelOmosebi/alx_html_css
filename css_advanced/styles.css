@@ -1,9 +1,17 @@
+
 /* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background-color: #121212;
+  line-height: 1.6;
+} */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -12,9 +20,18 @@ body {
   line-height: 1.6;
 }
 
+/* Add background to the first section inside main */
+main > section:first-of-type {
+  text-align: center;
+  padding: 100px 20px;
+  background: url("./images/Bitmap.png") no-repeat center center ;
+  background-size: cover;
+  /* background-color: #12121200; */
+}
+
 /* Header / Navbar */
 header {
-  background-color: #121212;
+  background-color: none;
   padding: 20px 60px;
 }
 
@@ -49,8 +66,8 @@ nav ul li a:hover {
 main section:first-of-type {
   text-align: center;
   padding: 100px 20px;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("./images/hero_bg.jpg") no-repeat center/cover;
 }
+
 
 main section:first-of-type h1 {
   font-size: 60px;
@@ -127,3 +144,40 @@ footer {
   padding: 20px 60px;
   margin-top: 60px;
 }
+
+/* Center the two divs, left-align only the text block in the second section */
+main > section:nth-of-type(2) {
+  background-color: #C271FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+}
+
+/* Image block: center content */
+main > section:nth-of-type(2) > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text block: left-align content */
+main > section:nth-of-type(2) > div:last-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  max-width: 590px;
+  width: 100%;
+}
+
+main > section:nth-of-type(2) blockquote,
+main > section:nth-of-type(2) h3,
+main > section:nth-of-type(2) p {
+  text-align: left;
+  width: 100%;
+}
+
