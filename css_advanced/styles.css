@@ -104,6 +104,13 @@ main section:nth-of-type(1) > div:last-child {
   margin-top: 80px;
 }
 
+/* Highlight "Learn" in the heading and make it bold */
+main section:nth-of-type(1) h2 .highlight {
+  color: #C271FF; /* or any color you prefer */
+  font-weight: bold;
+  font-size: large;
+}
+
 main section:nth-of-type(1) h2 {
   font-size: 28px;
   margin-bottom: 40px;
@@ -137,12 +144,6 @@ main section:nth-of-type(1) h3 {
 main section:nth-of-type(1) p {
   font-size: 14px;
   color: #ccc;
-}
-/* Footer */
-footer {
-  background-color: #1e1e1e;
-  padding: 20px 60px;
-  margin-top: 60px;
 }
 
 /* Center the two divs, left-align only the text block in the second section */
@@ -215,44 +216,46 @@ main > section:nth-of-type(3) > h2 {
   display: block;
 }
 
-/* Arrange the four tutorial blocks in a row and center them */
+/* Container: row layout by default */
+main > section:nth-of-type(3) {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;              /* allows wrapping */
+  justify-content: center;      /* center align horizontally */
+  align-items: stretch;
+  gap: 20px;                    /* space between boxes */
+}
+
+/* Each block */
 main > section:nth-of-type(3) > div {
   background: #f3f3f3;
   border-radius: 12px;
   padding: 24px 20px;
-  width: 260px;
+  flex: 1 1 220px;              /* base width */
+  max-width: 260px;             /* cap width */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 20px 40px 0;
   box-sizing: border-box;
 }
 
-main > section:nth-of-type(3) {
-  flex-wrap: wrap;
+/* Medium screens → 2 per row */
+@media (max-width: 900px) {
+  main > section:nth-of-type(3) > div {
+    flex: 1 1 45%;              /* ~2 per row */
+    max-width: 300px;
+  }
 }
 
-/* Responsive row for the four blocks */
-@media (min-width: 900px) {
-  main > section:nth-of-type(3) {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Small screens → 1 per row */
+@media (max-width: 500px) {
   main > section:nth-of-type(3) > div {
-    display: inline-flex;
-    margin-bottom: 0;
-  }
-  main > section:nth-of-type(3) {
-    flex-direction: column;
-    align-items: center;
-  }
-  main > section:nth-of-type(3) > div {
-    margin-right: 20px;
-  }
-  main > section:nth-of-type(3) > div:last-of-type {
-    margin-right: 0;
+    flex: 1 1 100%;             /* full width */
+    max-width: none;
   }
 }
+
+
 
 /* Style for images inside the blocks */
 main > section:nth-of-type(3) > div > img {
@@ -274,7 +277,7 @@ main > section:nth-of-type(3) > div > h3 {
 main > section:nth-of-type(3) > div > p {
   font-size: 14px;
   color: #333;
-  text-align: center;
+  text-align: left;
 }
 
 /* Author and rating blocks */
@@ -309,6 +312,24 @@ main > section:nth-of-type(3) > div > div:nth-of-type(2) {
 main > section:nth-of-type(3) .fa-star {
   color: #C271FF;
   font-size: 16px;
+}
+
+.tutorial-meta {
+  display: flex;
+  justify-content: space-between; /* star left, duration right */
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.rating {
+  color: gold;
+  font-size: 14px;
+}
+
+.duration {
+  font-size: 14px;
+  color: #555;
 }
 
 /* Duration text */
@@ -404,3 +425,106 @@ main > section:nth-of-type(4) button {
 main > section:nth-of-type(4) button:hover {
   background: #a260f6;
 }
+
+
+/* FAQ Section */
+main > section:nth-of-type(5) {
+  background: #fff;
+  color: #071629;
+  padding: 60px 20px;
+}
+
+/* FAQ Heading */
+main > section:nth-of-type(5) > h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #071629;
+}
+
+/* FAQ Grid Layout: two columns, two rows */
+main > section:nth-of-type(5) > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Each column */
+main > section:nth-of-type(5) > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Each Q&A pair */
+main > section:nth-of-type(5) h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #071629;
+  margin-bottom: 8px;
+}
+
+main > section:nth-of-type(5) > div > div > div {
+  color: #071629;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+/* Footer */
+footer {
+  background-color: #071629; /* dark navy background */
+  color: #fff;
+  padding: 2rem 0;
+  font-family: Arial, sans-serif;
+}
+
+footer section {
+  background-color: #071629; /* same as footer bg */
+  padding: 1rem 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer section > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer img {
+  height: 40px; /* adjust to your logo */
+}
+
+footer div i {
+  font-size: 14px;             /* control icon size */
+  color: #0a1829;              /* icon color (same as footer bg) */
+  background-color: #fff;      /* white circle */
+  border-radius: 50%;
+  width: 36px;                 /* fixed circle size */
+  height: 36px;
+  display: flex;               /* use flexbox to center */
+  align-items: center;         /* vertical center */
+  justify-content: center;     /* horizontal center */
+  margin-left: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+footer div i:hover {
+  background-color: #00aced; /* hover color (Twitter blue, for example) */
+  color: #fff;
+}
+
+footer p {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5); /* faded text like in image */
+  text-align: center;
+}
+
